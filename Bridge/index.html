@@ -34,6 +34,7 @@
           width: 800,
           height: 600,
           showAngleIndicator: true,
+          wireframes: false, // true if you don`t want the colours
         },
       });
 
@@ -47,7 +48,7 @@
       let group = Body.nextGroup(true);
 
       let bridge = Composites.stack(160, 290, 15, 1, 0, 0, function (x, y) {
-        return Bodies.rectangle(x  - 20, y, 53, 20, {
+        return Bodies.rectangle(x - 20, y, 53, 20, {
           collisionFilter: { group: group },
           chamfer: 4,
           density: 0.5,
@@ -120,7 +121,6 @@
         max: { x: 800, y: 600 },
       });
 
-      
       Runner.run(runner, engine);
     </script>
   </body>
