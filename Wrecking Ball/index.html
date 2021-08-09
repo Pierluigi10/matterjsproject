@@ -46,9 +46,9 @@
       let rows = 10,
         yy = 600 - 25 - 40 * rows;
 
-      // let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
-      let stack = Composites.pyramid(350, yy, 13, rows, 0, 0, function (x, y) { //(xx, yy, columns, rows, columnGap, rowGap, callback)
-        // let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
+      let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
+      // let stack = Composites.pyramid(350, yy, 13, rows, 0, 0, function (x, y) { //(xx, yy, columns, rows, columnGap, rowGap, callback)
+        
         return Bodies.rectangle(x, y, 40, 40);
       });
 
@@ -74,6 +74,7 @@
           bodyB: ball,
         })
       );
+      
 
       // add mouse control
       let mouse = Mouse.create(render.canvas),
@@ -88,6 +89,8 @@
         });
 
       Composite.add(world, mouseConstraint);
+
+      
 
       // keep the mouse in sync with rendering
       render.mouse = mouse;
