@@ -35,6 +35,13 @@
       });
       render.mouse = mouse;
 
+      let ball = Matter.Bodies.circle(300, 600, 20);
+      let sling = Matter.Constraint.create({
+        pointA: { x: 300, y: 600 }, //fix point of the sling
+        bodyB: ball, // ball attached to the sling
+        stiffness: 0.05,
+      });
+
       let stack = Matter.Composites.stack(
         1100,
         270,
@@ -48,7 +55,13 @@
         }
       );
 
-      Matter.World.add(engine.world, [stack, ground, mouseConstraint]);
+      Matter.World.add(engine.world, [
+        stack,
+        ground,
+        ball,
+        sling,
+        mouseConstraint,
+      ]);
       Matter.Engine.run(engine);
       Matter.Render.run(render);
     </script>
