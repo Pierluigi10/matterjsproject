@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetterJS</title>
+  </head>
+  <body>
+    <script src="matter.js" type="text/javascript"></script>
+    <script>
+      // module aliases
+      let Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Body = Matter.Body,
+        Composites = Matter.Composites,
+        Common = Matter.Common,
+        Constraint = Matter.Constraint,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        Composite = Matter.Composite,
+        Bodies = Matter.Bodies;
+      // create engine
+      let engine = Engine.create(),
+        world = engine.world;
+
+      // create renderer
+      let render = Render.create({
+        element: document.body,
+        engine: engine,
+        options: {
+          width: 800,
+          height: 600,
+          showAngleIndicator: true,
+        },
+      });
+
+      Render.run(render);
+
+      // create runner
+      let runner = Runner.create();
+      Runner.run(runner, engine);
+
+      // add bodies
+      let rows = 10,
+        yy = 600 - 25 - 40 * rows;
+
+      // let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
+      let stack = Composites.pyramid(350, yy, 13, rows, 0, 0, function (x, y) { //(xx, yy, columns, rows, columnGap, rowGap, callback)
+        // let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
+        return Bodies.rectangle(x, y, 40, 40);
+      });
+
+      Composite.add(world, [
+        stack,
+        // walls
+        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),//(x, y, width, height, [options])
+        Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
+        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
+        Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
+      ]);
+
+      let ball = Bodies.circle(100, 400, 50, { density: 0.04, frictionAir: 0.005});//(x, y, radius, [options], [maxSides])
+      // let ball = Bodies.polygon(100, 400,30, 30, { density: 0.04, frictionAir: 0.005});//(x, y, sides, radius, [options])
+      // let ball = Bodies.rectangle(100, 400, 100, 60, { density: 0.04, frictionAir: 0.005});//(x, y, width, height, [options])
+      // let ball = Bodies.trapezoid(100, 400, 130, 100, 0.2, { density: 0.04, frictionAir: 0.005});//(x, y, width, height, slope, [options])
+
+      Composite.add(world, ball);
+      Composite.add(
+        world,
+        Constraint.create({
+          pointA: { x: 300, y: 100 },
+          bodyB: ball,
+        })
+      );
+
+      // add mouse control
+      let mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+          mouse: mouse,
+          constraint: {
+            stiffness: 0.2,
+            render: {
+              visible: false,
+            },
+          },
+        });
+
+      Composite.add(world, mouseConstraint);
+
+      // keep the mouse in sync with rendering
+      render.mouse = mouse;
+
+      // fit the render viewport to the scene
+      Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: 800, y: 600 },
+      });
+
+      Runner.run(runner, engine);
+    </script>
+  </body>
+</html>
