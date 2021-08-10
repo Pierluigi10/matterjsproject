@@ -1,6 +1,6 @@
 // function Circle(x, y, r) {
 //   this.body = Bodies.circle(x, y, r);
-//   // this.body.friction = 0; //con questa opzione scivolano di + i rettangoli
+//   // this.body.friction = 0; //friction effect
 //   this.body.restitution = 0.6; // elasticity
 //   this.r = r;
 //   Composite.add(composite, this.body);
