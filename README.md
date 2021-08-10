@@ -35,18 +35,18 @@ Matter.js is a 2D physics engine for the web
 
 ![](./images/dragged.png)
 
+
+<br />
 <br />
 <br />
 
-> ### matter.js Official Website:
+> ### Sources and inspirations:
+
+<br />
+
+#### matter.js Official Website:
 
 https://brm.io/matter-js/
-
-<br />
-<br />
-<br />
-
-> #### Other sources and inspirations:
 
 <br />
 
