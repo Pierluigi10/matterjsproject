@@ -55,6 +55,8 @@
         }
       );
 
+      //The following events are emitted by objects created by Matter.Render.create and received by objects that have subscribed using Matter.Events.on.
+
       let firing = false;
       Matter.Events.on(mouseConstraint, "enddrag", function (e) {
         if (e.body === ball) firing = true;
@@ -62,11 +64,12 @@
 
       Matter.Events.on(engine, "afterUpdate", function () {
         if (
+          //if firing is true and the ball position is very close to the original point, we release the ball from the sling and replace it with the new one.
           firing &&
           Math.abs(ball.position.x - 300) < 20 &&
           Math.abs(ball.position.y - 600) < 20
         ) {
-          ball = Matter.Bodies.circle(300, 600, 20);
+          ball = Matter.Bodies.circle(300, 600, 20); //create a new ball at the start position
           Matter.World.add(engine.world, ball);
           sling.bodyB = ball;
           firing = false;
