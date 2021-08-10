@@ -69,7 +69,7 @@
           Math.abs(ball.position.x - 300) < 20 &&
           Math.abs(ball.position.y - 600) < 20
         ) {
-          ball = Matter.Bodies.circle(300, 600, 20); //create a new ball at the start position
+          ball = Matter.Bodies.circle(300, 600, Matter.Common.random(20, 50)); //create a new ball with random size at the start position 
           Matter.World.add(engine.world, ball);
           sling.bodyB = ball;
           firing = false;
