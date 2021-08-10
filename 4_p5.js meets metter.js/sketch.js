@@ -32,17 +32,17 @@ function setup() {
 }
 
 //per ogni click del mouse
-function mousePressed() {
-  boxes.push(new Box(mouseX, mouseY, 20, 20)); // crea quadrati
-  boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10, 40))); // crea rettangoli con grandezza random
-  boxes.push(new Circle(mouseX, mouseY, 16, 16));
-}
-
-//se clicchiamo e trasciniamo il mouse
-// function mouseDragged() {
+// function mousePressed() {
+//   boxes.push(new Box(mouseX, mouseY, 20, 20)); // crea quadrati
 //   boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10, 40))); // crea rettangoli con grandezza random
 //   boxes.push(new Circle(mouseX, mouseY, 16, 16));
 // }
+
+//se clicchiamo e trasciniamo il mouse
+function mouseDragged() {
+  boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10, 40))); // crea rettangoli con grandezza random
+  boxes.push(new Circle(mouseX, mouseY, 16, 16));
+}
 
 function draw() {
   background(51);
