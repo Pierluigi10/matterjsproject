@@ -35,7 +35,6 @@
           // showAngleIndicator: false, //no red indicator
           showAngleIndicator: true,
           wireframes: false, // true if you don`t want the colours
-
         },
       });
 
@@ -50,21 +49,25 @@
         yy = 600 - 25 - 40 * rows;
 
       let stack = Composites.stack(400, yy, 5, rows, 0, 0, function (x, y) {
-      // let stack = Composites.pyramid(350, yy, 13, rows, 0, 0, function (x, y) { //(xx, yy, columns, rows, columnGap, rowGap, callback)
-        
+        //(xx, yy, columns, rows, columnGap, rowGap, callback)
+        // let stack = Composites.pyramid(350, yy, 13, rows, 0, 0, function (x, y) { //(xx, yy, columns, rows, columnGap, rowGap, callback)
+
         return Bodies.rectangle(x, y, 40, 40);
       });
 
       Composite.add(world, [
         stack,
         // walls
-        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),//(x, y, width, height, [options])
+        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }), //(x, y, width, height, [options])
         Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
         Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
         Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
       ]);
 
-      let ball = Bodies.circle(100, 400, 50, { density: 0.04, frictionAir: 0.005});//(x, y, radius, [options], [maxSides])
+      let ball = Bodies.circle(100, 400, 50, {
+        density: 0.04,
+        frictionAir: 0.005,
+      }); //(x, y, radius, [options], [maxSides])
       // let ball = Bodies.polygon(100, 400,30, 30, { density: 0.04, frictionAir: 0.005});//(x, y, sides, radius, [options])
       // let ball = Bodies.rectangle(100, 400, 100, 60, { density: 0.04, frictionAir: 0.005});//(x, y, width, height, [options])
       // let ball = Bodies.trapezoid(100, 400, 130, 100, 0.2, { density: 0.04, frictionAir: 0.005});//(x, y, width, height, slope, [options])
@@ -77,8 +80,6 @@
           bodyB: ball,
         })
       );
-      
-      
 
       // add mouse control
       let mouse = Mouse.create(render.canvas),
@@ -93,8 +94,6 @@
         });
 
       Composite.add(world, mouseConstraint);
-
-      
 
       // keep the mouse in sync with rendering
       render.mouse = mouse;

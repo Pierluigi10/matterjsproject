@@ -13,14 +13,14 @@
       let Engine = Matter.Engine, //An engine is a controller that manages updating the simulation of the world
         Render = Matter.Render, // simple canvas
         Runner = Matter.Runner, //provides a game loop
-        Composite = Matter.Composite,// our container
+        Composite = Matter.Composite, // our container
         Body = Matter.Body, //contains methods for creating and manipulating body models.
         Bodies = Matter.Bodies; // methods for creating rigid body models(circle, polygon, rectangle, trapezoid)
-        Composites = Matter.Composites, //contains factory methods for creating composite bodies 
-        Common = Matter.Common, //utility functions that are common to all modules.
-        Constraint = Matter.Constraint,
-        MouseConstraint = Matter.MouseConstraint, // to allow the interaction ( ex. to move the bodies via mouse or touch)
-        Mouse = Matter.Mouse //mouse features
+      (Composites = Matter.Composites), //contains factory methods for creating composite bodies
+        (Common = Matter.Common), //utility functions that are common to all modules.
+        (Constraint = Matter.Constraint),
+        (MouseConstraint = Matter.MouseConstraint), // to allow the interaction ( ex. to move the bodies via mouse or touch)
+        (Mouse = Matter.Mouse); //mouse features
 
       // create engine
       let engine = Engine.create(),
@@ -53,6 +53,7 @@
       let group = Body.nextGroup(true);
 
       let bridge = Composites.stack(160, 290, 15, 1, 0, 0, function (x, y) {
+        //(xx, yy, columns, rows, columnGap, rowGap, callback)
         return Bodies.rectangle(x - 20, y, 53, 20, {
           collisionFilter: { group: group },
           chamfer: 4,
@@ -65,6 +66,7 @@
       });
 
       Composites.chain(bridge, 0.3, 0, -0.3, 0, {
+        // (composite, xOffsetA num, yOffsetA num, xOffsetB num, yOffsetB num, options)
         stiffness: 1,
         length: 0,
         render: {
