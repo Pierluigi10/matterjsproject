@@ -10,7 +10,7 @@
     <script src="/libraries/matter.js" type="text/javascript"></script>
     <script>
       // module aliases
-      let Engine = Matter.Engine, //An engine is a controller that manages updating the simulation of the world
+      let Engine = Matter.Engine, //An engine is a controller that manages updating the simulation of the world (Composite)
         Render = Matter.Render, // simple canvas
         Runner = Matter.Runner, //provides a game loop
         Composite = Matter.Composite, // our container
@@ -57,8 +57,8 @@
         return Bodies.rectangle(x - 20, y, 53, 20, {
           collisionFilter: { group: group },
           chamfer: 4,
-          density: 0.5,
-          frictionAir: 0.5,
+          density: 0.5, // mass per unit area
+          frictionAir: 0.5, //air resistance
           render: {
             fillStyle: "#060a19",
           },
