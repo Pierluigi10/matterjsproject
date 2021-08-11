@@ -75,9 +75,11 @@
       Composite.add(world, ball);
       Composite.add(
         world,
-        Constraint.create({
-          pointA: { x: 300, y: 100 },
+        Constraint.create({ // create the cable
+          pointA: { x: 270, y: 100 },
           bodyB: ball,
+          // stiffness: 0.5,
+          // length: 400
         })
       );
 
