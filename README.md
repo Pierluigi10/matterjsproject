@@ -58,3 +58,9 @@ https://p5js.org/
 ##### Introduction to matter.js on youtube:
 
 https://www.youtube.com/watch?v=urR596FsU68
+
+<br />
+
+##### collection of nice examples:
+
+https://codepen.io/collection/Fuagy/
