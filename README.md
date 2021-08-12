@@ -6,7 +6,7 @@ Matter.js is a 2D physics engine for the web built in JavaScript
 
 <br />
 
-## matter.js Exeples:
+## matter.js Examples:
 
 <br />
 
