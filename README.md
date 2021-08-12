@@ -31,7 +31,7 @@ Matter.js is a 2D physics engine for the web built in JavaScript
 <br />
 <br />
 
-#### p5.js meets metter.js
+#### p5.js meets matter.js
 
 ![](./images/dragged.png)
 
