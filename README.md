@@ -61,6 +61,6 @@ https://www.youtube.com/watch?v=urR596FsU68
 
 <br />
 
-##### collection of nice examples:
+##### Collection of nice examples:
 
 https://codepen.io/collection/Fuagy/
